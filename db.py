@@ -5,6 +5,7 @@ import logging
 from collections.abc import Iterator
 from contextlib import contextmanager
 from functools import lru_cache
+from pathlib import Path
 
 from sqlalchemy import Engine, create_engine, text
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
@@ -49,10 +50,51 @@ def check_connection() -> str:
         return conn.execute(text("SELECT version()")).scalar_one()
 
 
+def _sql_statements(sql: str) -> list[str]:
+    """Split a migration file into individual statements."""
+    statements: list[str] = []
+    for chunk in sql.split(";"):
+        lines = [line for line in chunk.splitlines() if not line.strip().startswith("--")]
+        statement = "\n".join(lines).strip()
+        if statement:
+            statements.append(statement)
+    return statements
+
+
+def apply_migrations() -> list[str]:
+    """Apply new SQL files in db/migrations and record them in schema_migrations."""
+    folder = Path(__file__).resolve().parent / "db" / "migrations"
+    applied: list[str] = []
+    with get_engine().begin() as conn:
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS schema_migrations (
+                filename text PRIMARY KEY,
+                applied_at timestamptz NOT NULL DEFAULT now()
+            )
+        """))
+        done = {row[0] for row in conn.execute(text("SELECT filename FROM schema_migrations"))}
+        for path in sorted(folder.glob("*.sql")):
+            if path.name in done:
+                continue
+            for statement in _sql_statements(path.read_text(encoding="utf-8")):
+                conn.execute(text(statement))
+            conn.execute(
+                text("INSERT INTO schema_migrations (filename) VALUES (:filename)"),
+                {"filename": path.name},
+            )
+            applied.append(path.name)
+    return applied
+
+
 if __name__ == "__main__":
     setup_logging()
     try:
         log.info("Connected: %s", check_connection())
+        new_files = apply_migrations()
+        if new_files:
+            log.info("Applied migrations: %s", ", ".join(new_files))
+        else:
+            log.info("No new migrations")
     except Exception as exc:  # noqa: BLE001
         log.error("Database connection failed: %s", exc)
         raise SystemExit(1) from exc
