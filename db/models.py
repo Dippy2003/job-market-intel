@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import date, datetime
 from decimal import Decimal
 
-from sqlalchemy import Date, DateTime, Identity, Index, Numeric, Text, func
+from sqlalchemy import BigInteger, Date, DateTime, Identity, Index, Numeric, Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from db import Base
@@ -26,6 +26,7 @@ class Job(Base):
     title_normalized: Mapped[str | None] = mapped_column(Text)
     company: Mapped[str | None] = mapped_column(Text)
     location: Mapped[str | None] = mapped_column(Text)
+    location_normalized: Mapped[str | None] = mapped_column(Text)
     salary_min: Mapped[Decimal | None] = mapped_column(Numeric(12, 2))
     salary_max: Mapped[Decimal | None] = mapped_column(Numeric(12, 2))
     description: Mapped[str | None] = mapped_column(Text)
@@ -33,6 +34,7 @@ class Job(Base):
     closing_date: Mapped[date | None] = mapped_column(Date)
     content_hash: Mapped[str | None] = mapped_column(Text)
     raw_html_path: Mapped[str | None] = mapped_column(Text)
+    duplicate_of: Mapped[int | None] = mapped_column(BigInteger)
     scraped_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 

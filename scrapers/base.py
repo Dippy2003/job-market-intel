@@ -44,13 +44,28 @@ logging.basicConfig(
 )
 
 
+_NOISE_PAREN = re.compile(
+    r"\((?:remote|urgent|temporary|us shift|wfh|work from home|female|male)\)",
+    re.IGNORECASE,
+)
+_YEAR_PAREN = re.compile(r"\([^)]*\byears?\b[^)]*\)", re.IGNORECASE)
+_YEAR_CLAUSE = re.compile(r"\bwith\s+(?:one|a|\d+)\s+years?\b.*", re.IGNORECASE)
+
+
 def normalize_title(title: str) -> str:
-    t = title.lower()
-    t = re.sub(r"[\(\[].*?[\)\]]", " ", t)          # drop "(Remote)", "[Urgent]"
-    t = re.sub(r"\b(sr|snr)\b\.?", "senior", t)
-    t = re.sub(r"\b(jr)\b\.?", "junior", t)
-    t = re.sub(r"[^a-z0-9+#.\s]", " ", t)
-    return re.sub(r"\s+", " ", t).strip()
+    """Lowercase a title, expand sr/jr, and drop shift or experience noise.
+
+    Short skill notes such as "(WordPress)" stay in the cleaned title.
+    """
+    text = _NOISE_PAREN.sub(" ", title)
+    text = _YEAR_PAREN.sub(" ", text)
+    text = text.replace("(", " ").replace(")", " ").replace("[", " ").replace("]", " ")
+    text = _YEAR_CLAUSE.sub(" ", text)
+    text = text.lower()
+    text = re.sub(r"\b(sr|snr)\b\.?", "senior", text)
+    text = re.sub(r"\b(jr)\b\.?", "junior", text)
+    text = re.sub(r"[^a-z0-9+#.\s]", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def content_hash(title: str, company: str | None, description: str | None) -> str:
