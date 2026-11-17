@@ -28,6 +28,8 @@ from requests.adapters import HTTPAdapter
 from sqlalchemy import create_engine, text
 from urllib3.util.retry import Retry
 
+from config import get_settings
+
 load_dotenv()
 
 USER_AGENT = os.environ.get(
@@ -71,7 +73,7 @@ class BaseScraper(ABC):
         self.dry_run = dry_run
         self.session = self._make_session()
         self.robots = self._load_robots()
-        self.engine = None if dry_run else create_engine(os.environ["DATABASE_URL"], pool_pre_ping=True)
+        self.engine = None if dry_run else create_engine(get_settings().database_url, pool_pre_ping=True)
         self.stats = {"pages": 0, "found": 0, "inserted": 0, "errors": 0}
 
     # ---------- HTTP ----------
@@ -87,10 +89,19 @@ class BaseScraper(ABC):
 
     def _load_robots(self) -> robotparser.RobotFileParser:
         rp = robotparser.RobotFileParser()
-        rp.set_url(urljoin(self.base_url, "/robots.txt"))
+        robots_url = urljoin(self.base_url, "/robots.txt")
+        rp.set_url(robots_url)
         try:
-            rp.read()
-        except Exception as e:  # unreachable robots.txt -> be conservative but continue
+            # Use our own user agent. urllib's default agent gets 403 here, and
+            # RobotFileParser then treats the whole site as disallowed.
+            response = self.session.get(robots_url, timeout=self.timeout)
+            if response.status_code in (401, 403):
+                rp.disallow_all = True
+            elif response.ok:
+                rp.parse(response.text.splitlines())
+            elif 400 <= response.status_code < 500:
+                rp.allow_all = True
+        except requests.RequestException as e:
             self.log.warning("Could not read robots.txt: %s", e)
         return rp
 
@@ -205,6 +216,7 @@ class BaseScraper(ABC):
                     job["raw_html_path"] = self.save_raw(job_url, job_html)
                     if self.save_job(job):
                         self.stats["inserted"] += 1
+                        self.log.info("Inserted %s", job["title"])
             if self.stats["found"] == 0:
                 status = "zero_results"
                 self.log.warning("Zero results: the site layout may have changed")

@@ -17,6 +17,12 @@ from scrapers.base import BaseScraper
 LISTING_URL = "https://itpro.lk/jobs/"
 
 
+def _first_dict(value: object) -> dict:
+    if isinstance(value, list):
+        value = value[0] if value else {}
+    return value if isinstance(value, dict) else {}
+
+
 def _as_date(value: str | None) -> date | None:
     if not value:
         return None
@@ -73,10 +79,8 @@ class ItproScraper(BaseScraper):
         posting = _job_posting(soup)
         if not posting or not posting.get("title"):
             return None
-        organization = posting.get("hiringOrganization") or {}
-        address = (posting.get("jobLocation") or {}).get("address") or {}
-        if isinstance(address, list):
-            address = address[0] if address else {}
+        organization = _first_dict(posting.get("hiringOrganization"))
+        address = _first_dict(_first_dict(posting.get("jobLocation")).get("address"))
         description_html = posting.get("description") or ""
         description = BeautifulSoup(description_html, "lxml").get_text("\n", strip=True)
         salary_min, salary_max = _salary(posting.get("baseSalary"))

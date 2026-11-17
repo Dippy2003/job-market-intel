@@ -31,6 +31,23 @@ def test_detail_parser_reads_public_job_fields():
     assert job["salary_min"] is None
 
 
+def test_detail_parser_accepts_location_list():
+    html = """
+    <script type="application/ld+json">
+    {"@type":"JobPosting","title":"Junior Web Developer",
+     "hiringOrganization":[{"@type":"Organization","name":"Prime One"}],
+     "jobLocation":[{"@type":"Place","address":[{"addressLocality":"Colombo"},{"addressLocality":"Jaffna"}]}],
+     "description":"<p>Build sites.</p>","datePosted":"2026-11-16"}
+    </script>
+    """
+    job = _scraper().parse_job(html, "https://itpro.lk/job/1/x/")
+    assert job is not None
+    assert job["title"] == "Junior Web Developer"
+    assert job["company"] == "Prime One"
+    assert job["location"] == "Colombo"
+    assert job["posted_date"] == date(2026, 11, 16)
+
+
 def test_itpro_waits_at_least_ten_seconds():
     assert ItproScraper.min_delay >= 10
 
