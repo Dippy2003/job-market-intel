@@ -1,0 +1,30 @@
+# Core / config
+python-dotenv>=1.0
+pydantic>=2.6
+pydantic-settings>=2.2
+
+# Database
+SQLAlchemy>=2.0
+alembic>=1.13
+psycopg[binary]>=3.1
+
+# Scraping
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.1
+# playwright>=1.42        # add only when a site needs JavaScript
+
+# Data / NLP / ML (used from step 5 on)
+pandas>=2.2
+# spacy>=3.7
+# scikit-learn>=1.4
+# prophet>=1.1
+# sentence-transformers>=2.6
+
+# API (step 8)
+# fastapi>=0.110
+# uvicorn[standard]>=0.29
+
+# Dev
+pytest>=8.0
+ruff>=0.4
