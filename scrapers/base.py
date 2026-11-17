@@ -30,9 +30,9 @@ from urllib3.util.retry import Retry
 
 load_dotenv()
 
-USER_AGENT = (
-    "job-market-intel/0.1 (student research project; "
-    "contact: your-email@example.com)"  # put your real contact email here
+USER_AGENT = os.environ.get(
+    "SCRAPER_USER_AGENT",
+    "job-market-intel/0.1 (student research project; contact: your-email@example.com)",
 )
 RAW_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
 

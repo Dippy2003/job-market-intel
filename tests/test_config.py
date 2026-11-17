@@ -15,6 +15,7 @@ def test_postgres_scheme_also_converted(monkeypatch):
 
 def test_defaults(monkeypatch):
     monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@host/db")
+    monkeypatch.delenv("LLM_API_KEY", raising=False)
     s = Settings(_env_file=None)
     assert s.scraper_min_delay >= 2.0
     assert s.llm_api_key is None
