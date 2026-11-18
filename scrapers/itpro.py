@@ -14,7 +14,21 @@ from bs4 import BeautifulSoup
 
 from scrapers.base import BaseScraper
 
-LISTING_URL = "https://itpro.lk/jobs/"
+LISTING_URLS = (
+    "https://itpro.lk/jobs/",
+    "https://itpro.lk/jobs/software-engineering/",
+    "https://itpro.lk/jobs/quality-assurance/",
+    "https://itpro.lk/jobs/web-development/",
+    "https://itpro.lk/jobs/mobile-development/",
+    "https://itpro.lk/jobs/information-technology/",
+    "https://itpro.lk/jobs/devops-cloud/",
+    "https://itpro.lk/jobs/ai-and-data/",
+    "https://itpro.lk/jobs/management-business/",
+    "https://itpro.lk/jobs/design-creative/",
+    "https://itpro.lk/jobs/digital-marketing/",
+    "https://itpro.lk/jobs/hardware-networking/",
+    "https://itpro.lk/jobs/academic/",
+)
 
 
 def _first_dict(value: object) -> dict:
@@ -62,7 +76,7 @@ class ItproScraper(BaseScraper):
     max_delay = 12.0
 
     def listing_urls(self) -> Iterable[str]:
-        yield LISTING_URL
+        yield from LISTING_URLS
 
     def parse_listing(self, html: str, url: str) -> list[str]:
         soup = BeautifulSoup(html, "lxml")
