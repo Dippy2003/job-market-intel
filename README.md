@@ -8,4 +8,6 @@ pip install -r requirements.txt
 cp .env.example .env    # then fill in DATABASE_URL
 python db.py            # should log "Connected: PostgreSQL ..."
 pytest && ruff check .
+python -m pipeline.run_daily              # scrape ITPro, then clean + dedupe
+python -m pipeline.run_daily --skip-scrape  # clean + dedupe only
 ```
