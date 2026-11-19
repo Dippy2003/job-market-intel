@@ -7,8 +7,8 @@ The terms of use allow browsing listings and do not forbid copying public ads.
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from datetime import date, datetime
-from typing import Iterable
 
 from bs4 import BeautifulSoup
 

@@ -6,6 +6,7 @@ Scrapes Sri Lankan job postings, extracts in-demand skills, tracks and forecasts
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 cp .env.example .env    # then fill in DATABASE_URL
-python db.py            # should log "Connected: PostgreSQL ..."
+python -m db            # should log "Connected: PostgreSQL ..."
+alembic upgrade head    # stamp 0001 first if jobs and scrape_runs already exist
 pytest && ruff check .
 ```
