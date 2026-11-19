@@ -33,6 +33,18 @@ def test_same_title_company_and_date_match_across_hashes():
     assert duplicate_map(rows) == {3: 1}
 
 
+def test_same_title_company_and_date_match_across_sources():
+    rows = [
+        _job(1, url="https://itpro.lk/job/1/", content_hash="itpro-hash"),
+        _job(
+            2,
+            url="https://www.topjobs.lk/employer/JobAdvertismentServlet?jc=9",
+            content_hash="topjobs-hash",
+        ),
+    ]
+    assert duplicate_map(rows) == {2: 1}
+
+
 def test_different_day_is_not_a_duplicate():
     rows = [
         _job(1, posted_date=date(2026, 11, 1)),
