@@ -12,6 +12,14 @@ def _scraper() -> ItproScraper:
     return ItproScraper.__new__(ItproScraper)
 
 
+def test_listing_urls_skip_query_strings():
+    urls = list(_scraper().listing_urls())
+    assert "https://itpro.lk/jobs/software-engineering/" in urls
+    assert "https://itpro.lk/jobs/ai-and-data/" in urls
+    assert all("?" not in url for url in urls)
+    assert len(urls) == 13
+
+
 def test_listing_parser_reads_fifty_job_links():
     urls = _scraper().parse_listing(LISTING, "https://itpro.lk/jobs/")
     assert len(urls) == 50
