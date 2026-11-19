@@ -10,13 +10,13 @@ from pathlib import Path
 from sqlalchemy import Engine, create_engine, text
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
-from config import get_settings, setup_logging
+from config import get_settings
 
 log = logging.getLogger(__name__)
 
 
 class Base(DeclarativeBase):
-    """Base class for ORM models (step 2)."""
+    """Base class for ORM models."""
 
 
 @lru_cache
@@ -63,7 +63,7 @@ def _sql_statements(sql: str) -> list[str]:
 
 def apply_migrations() -> list[str]:
     """Apply new SQL files in db/migrations and record them in schema_migrations."""
-    folder = Path(__file__).resolve().parent / "db" / "migrations"
+    folder = Path(__file__).resolve().parent / "migrations"
     applied: list[str] = []
     with get_engine().begin() as conn:
         conn.execute(text("""
@@ -84,17 +84,3 @@ def apply_migrations() -> list[str]:
             )
             applied.append(path.name)
     return applied
-
-
-if __name__ == "__main__":
-    setup_logging()
-    try:
-        log.info("Connected: %s", check_connection())
-        new_files = apply_migrations()
-        if new_files:
-            log.info("Applied migrations: %s", ", ".join(new_files))
-        else:
-            log.info("No new migrations")
-    except Exception as exc:  # noqa: BLE001
-        log.error("Database connection failed: %s", exc)
-        raise SystemExit(1) from exc

@@ -1,7 +1,6 @@
 """The first migration must cover every column the base scraper writes."""
 from pathlib import Path
 
-
 SQL = Path("db/migrations/001_jobs_and_scrape_runs.sql").read_text(encoding="utf-8")
 
 

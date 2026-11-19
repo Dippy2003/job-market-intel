@@ -16,9 +16,9 @@ import random
 import re
 import time
 from abc import ABC, abstractmethod
-from datetime import datetime, timezone
+from collections.abc import Iterable
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Iterable
 from urllib import robotparser
 from urllib.parse import urljoin
 
@@ -142,7 +142,7 @@ class BaseScraper(ABC):
             return None
 
     def save_raw(self, url: str, html: str) -> str:
-        day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        day = datetime.now(UTC).strftime("%Y-%m-%d")
         folder = RAW_DIR / self.source / day
         folder.mkdir(parents=True, exist_ok=True)
         path = folder / f"{hashlib.md5(url.encode()).hexdigest()}.html"
