@@ -1,0 +1,224 @@
+[
+  {
+    "title": "C++ engineer",
+    "description": "Build services in C++17.",
+    "expect": ["C++"],
+    "reject": ["C"]
+  },
+  {
+    "title": "Systems programmer",
+    "description": "Experience with C and C++.",
+    "expect": ["C", "C++"],
+    "reject": []
+  },
+  {
+    "title": "Polyglot",
+    "description": "Python, Java, C, SQL",
+    "expect": ["Python", "Java", "C", "SQL"],
+    "reject": ["JavaScript"]
+  },
+  {
+    "title": "Embedded",
+    "description": "written in C.",
+    "expect": ["C"],
+    "reject": ["C++", "C#"]
+  },
+  {
+    "title": "Backend",
+    "description": "C/C++ and a little Python.",
+    "expect": ["C", "C++", "Python"],
+    "reject": []
+  },
+  {
+    "title": "C# developer",
+    "description": "Senior .NET Developer with C# and SQL Server.",
+    "expect": ["C#", ".NET", "SQL Server"],
+    "reject": ["C", "SQL"]
+  },
+  {
+    "title": "Mobile",
+    "description": "Objective-C developer",
+    "expect": ["Objective-C"],
+    "reject": ["C"]
+  },
+  {
+    "title": "F# shop",
+    "description": "We use F# and C#.",
+    "expect": ["F#", "C#"],
+    "reject": ["C"]
+  },
+  {
+    "title": "Go developer",
+    "description": "Must have Go.",
+    "expect": ["Go"],
+    "reject": []
+  },
+  {
+    "title": "Golang",
+    "description": "Golang developer for platform services.",
+    "expect": ["Go"],
+    "reject": []
+  },
+  {
+    "title": "Not a journey",
+    "description": "Let's go to Colombo for the interview.",
+    "expect": [],
+    "reject": ["Go"]
+  },
+  {
+    "title": "Launch",
+    "description": "go-live support for the release.",
+    "expect": [],
+    "reject": ["Go"]
+  },
+  {
+    "title": "Hiring event",
+    "description": "Google hiring event in Colombo.",
+    "expect": [],
+    "reject": ["Go", "GCP"]
+  },
+  {
+    "title": "Cloud",
+    "description": "Google Cloud Platform and BigQuery.",
+    "expect": ["GCP", "BigQuery"],
+    "reject": ["Go"]
+  },
+  {
+    "title": "Files",
+    "description": "See main.go for the entrypoint.",
+    "expect": [],
+    "reject": ["Go"]
+  },
+  {
+    "title": "Statistics",
+    "description": "experience with R and Python.",
+    "expect": ["R", "Python"],
+    "reject": []
+  },
+  {
+    "title": "Research",
+    "description": "R&D manager for a new product.",
+    "expect": [],
+    "reject": ["R"]
+  },
+  {
+    "title": "Labs",
+    "description": "our R and D team uses Python.",
+    "expect": ["Python"],
+    "reject": ["R"]
+  },
+  {
+    "title": "School",
+    "description": "Grade C student with good attendance.",
+    "expect": [],
+    "reject": ["C"]
+  },
+  {
+    "title": "Finance",
+    "description": "Accounting clerk.",
+    "expect": [],
+    "reject": ["C"]
+  },
+  {
+    "title": "Leadership",
+    "description": "C-level executive who knows C++.",
+    "expect": ["C++"],
+    "reject": ["C"]
+  },
+  {
+    "title": "Database",
+    "description": "PostgreSQL administrator.",
+    "expect": ["PostgreSQL"],
+    "reject": ["SQL"]
+  },
+  {
+    "title": "Queries",
+    "description": "We use SQL daily.",
+    "expect": ["SQL"],
+    "reject": ["PostgreSQL", "MySQL"]
+  },
+  {
+    "title": "Documents",
+    "description": "NoSQL store beside MySQL.",
+    "expect": ["NoSQL", "MySQL"],
+    "reject": ["SQL"]
+  },
+  {
+    "title": "Oracle stack",
+    "description": "PL/SQL and T-SQL reports.",
+    "expect": ["PL/SQL", "T-SQL"],
+    "reject": ["SQL"]
+  },
+  {
+    "title": "Web",
+    "description": "JavaScript and TypeScript for the web UI.",
+    "expect": ["JavaScript", "TypeScript"],
+    "reject": ["Java"]
+  },
+  {
+    "title": "Mobile web",
+    "description": "React Native developer.",
+    "expect": ["React Native"],
+    "reject": ["React"]
+  },
+  {
+    "title": "Frontend",
+    "description": "React and React Native.",
+    "expect": ["React", "React Native"],
+    "reject": []
+  },
+  {
+    "title": "Node",
+    "description": "Node.js and JavaScript.",
+    "expect": ["Node.js", "JavaScript"],
+    "reject": ["Java"]
+  },
+  {
+    "title": "Case",
+    "description": "PYTHON and postgresql.",
+    "expect": ["Python", "PostgreSQL"],
+    "reject": []
+  },
+  {
+    "title": "Dotnet",
+    "description": "dotnet services on Azure.",
+    "expect": [".NET", "Azure"],
+    "reject": ["C"]
+  },
+  {
+    "title": "Models",
+    "description": "scikit-learn and PyTorch for machine learning.",
+    "expect": ["scikit-learn", "PyTorch", "Machine Learning"],
+    "reject": []
+  },
+  {
+    "title": "Delivery",
+    "description": "CI/CD with GitHub Actions.",
+    "expect": ["CI/CD", "GitHub Actions"],
+    "reject": ["GitHub", "C"]
+  },
+  {
+    "title": "Services",
+    "description": "Build a microservice and micro services.",
+    "expect": ["Microservices"],
+    "reject": []
+  },
+  {
+    "title": "Markup",
+    "description": "HTML5 and CSS3.",
+    "expect": ["HTML", "CSS"],
+    "reject": []
+  },
+  {
+    "title": "Serverless",
+    "description": "AWS Lambda and S3.",
+    "expect": ["AWS Lambda", "S3"],
+    "reject": ["AWS"]
+  },
+  {
+    "title": "Office",
+    "description": "Office administrator in Kandy who welcomes visitors.",
+    "expect": [],
+    "reject": ["C", "R", "Go", "Python", "SQL"]
+  }
+]

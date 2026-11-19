@@ -1,0 +1,2416 @@
+{
+  "skills": [
+    {
+      "name": "Crystal Reports",
+      "category": "analytics",
+      "aliases": []
+    },
+    {
+      "name": "Excel",
+      "category": "analytics",
+      "aliases": [
+        "microsoft excel",
+        "ms excel"
+      ]
+    },
+    {
+      "name": "Looker",
+      "category": "analytics",
+      "aliases": []
+    },
+    {
+      "name": "Metabase",
+      "category": "analytics",
+      "aliases": []
+    },
+    {
+      "name": "Power BI",
+      "category": "analytics",
+      "aliases": [
+        "powerbi"
+      ]
+    },
+    {
+      "name": "PowerPoint",
+      "category": "analytics",
+      "aliases": [
+        "microsoft powerpoint"
+      ]
+    },
+    {
+      "name": "Qlik",
+      "category": "analytics",
+      "aliases": [
+        "qlikview",
+        "qlik sense"
+      ]
+    },
+    {
+      "name": "SPSS",
+      "category": "analytics",
+      "aliases": []
+    },
+    {
+      "name": "Tableau",
+      "category": "analytics",
+      "aliases": []
+    },
+    {
+      "name": ".NET",
+      "category": "backend",
+      "aliases": [
+        "dotnet",
+        "dot net",
+        ".net core",
+        ".net framework",
+        "dotnet core"
+      ]
+    },
+    {
+      "name": "ActiveMQ",
+      "category": "backend",
+      "aliases": [
+        "active mq"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server",
+      "category": "backend",
+      "aliases": [
+        "apache",
+        "httpd",
+        "apache httpd"
+      ]
+    },
+    {
+      "name": "Apache Struts",
+      "category": "backend",
+      "aliases": [
+        "struts"
+      ]
+    },
+    {
+      "name": "ASP.NET",
+      "category": "backend",
+      "aliases": [
+        "asp.net core",
+        "aspnet",
+        "asp net",
+        "asp.net mvc"
+      ]
+    },
+    {
+      "name": "Blazor",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "CakePHP",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Celery",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "CodeIgniter",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Django",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Django REST Framework",
+      "category": "backend",
+      "aliases": [
+        "drf"
+      ]
+    },
+    {
+      "name": "Entity Framework",
+      "category": "backend",
+      "aliases": [
+        "entity framework core",
+        "ef core"
+      ]
+    },
+    {
+      "name": "Express.js",
+      "category": "backend",
+      "aliases": [
+        "expressjs",
+        "express js"
+      ]
+    },
+    {
+      "name": "FastAPI",
+      "category": "backend",
+      "aliases": [
+        "fast api"
+      ]
+    },
+    {
+      "name": "Flask",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Gradle",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "gRPC",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Gunicorn",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Hibernate",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "IIS",
+      "category": "backend",
+      "aliases": [
+        "internet information services"
+      ]
+    },
+    {
+      "name": "Java Servlets",
+      "category": "backend",
+      "aliases": [
+        "servlets",
+        "java servlet"
+      ]
+    },
+    {
+      "name": "JSF",
+      "category": "backend",
+      "aliases": [
+        "java server faces",
+        "javaserver faces"
+      ]
+    },
+    {
+      "name": "JSP",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Laravel",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "LINQ",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Maven",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Memcached",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Microservices",
+      "category": "backend",
+      "aliases": [
+        "microservice",
+        "micro services"
+      ]
+    },
+    {
+      "name": "NestJS",
+      "category": "backend",
+      "aliases": [
+        "nest.js",
+        "nest js"
+      ]
+    },
+    {
+      "name": "Nginx",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Node.js",
+      "category": "backend",
+      "aliases": [
+        "nodejs",
+        "node js"
+      ]
+    },
+    {
+      "name": "OpenAPI",
+      "category": "backend",
+      "aliases": [
+        "open api",
+        "swagger"
+      ]
+    },
+    {
+      "name": "RabbitMQ",
+      "category": "backend",
+      "aliases": [
+        "rabbit mq"
+      ]
+    },
+    {
+      "name": "Razor Pages",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "REST API",
+      "category": "backend",
+      "aliases": [
+        "restful",
+        "restful api",
+        "rest apis",
+        "restful apis"
+      ]
+    },
+    {
+      "name": "Ruby on Rails",
+      "category": "backend",
+      "aliases": [
+        "rails",
+        "ror"
+      ]
+    },
+    {
+      "name": "SOAP",
+      "category": "backend",
+      "aliases": [
+        "soap api"
+      ]
+    },
+    {
+      "name": "Spring",
+      "category": "backend",
+      "aliases": [
+        "spring framework",
+        "spring mvc"
+      ]
+    },
+    {
+      "name": "Spring Boot",
+      "category": "backend",
+      "aliases": [
+        "springboot"
+      ]
+    },
+    {
+      "name": "Symfony",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Tomcat",
+      "category": "backend",
+      "aliases": [
+        "apache tomcat"
+      ]
+    },
+    {
+      "name": "WCF",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "WebSockets",
+      "category": "backend",
+      "aliases": [
+        "websocket",
+        "web sockets"
+      ]
+    },
+    {
+      "name": "WPF",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Yii",
+      "category": "backend",
+      "aliases": []
+    },
+    {
+      "name": "Amazon Athena",
+      "category": "cloud",
+      "aliases": [
+        "athena"
+      ]
+    },
+    {
+      "name": "Amazon ECS",
+      "category": "cloud",
+      "aliases": [
+        "ecs"
+      ]
+    },
+    {
+      "name": "Amazon EKS",
+      "category": "cloud",
+      "aliases": [
+        "eks"
+      ]
+    },
+    {
+      "name": "Amazon EMR",
+      "category": "cloud",
+      "aliases": [
+        "emr",
+        "aws emr"
+      ]
+    },
+    {
+      "name": "Amazon RDS",
+      "category": "cloud",
+      "aliases": [
+        "rds",
+        "aws rds"
+      ]
+    },
+    {
+      "name": "Amazon VPC",
+      "category": "cloud",
+      "aliases": [
+        "vpc"
+      ]
+    },
+    {
+      "name": "AWS",
+      "category": "cloud",
+      "aliases": [
+        "amazon web services"
+      ]
+    },
+    {
+      "name": "AWS Glue",
+      "category": "cloud",
+      "aliases": []
+    },
+    {
+      "name": "AWS Lambda",
+      "category": "cloud",
+      "aliases": [
+        "lambda"
+      ]
+    },
+    {
+      "name": "Azure",
+      "category": "cloud",
+      "aliases": [
+        "microsoft azure"
+      ]
+    },
+    {
+      "name": "Azure Functions",
+      "category": "cloud",
+      "aliases": []
+    },
+    {
+      "name": "Azure Kubernetes Service",
+      "category": "cloud",
+      "aliases": [
+        "aks"
+      ]
+    },
+    {
+      "name": "Bicep",
+      "category": "cloud",
+      "aliases": []
+    },
+    {
+      "name": "CloudFormation",
+      "category": "cloud",
+      "aliases": [
+        "aws cloudformation"
+      ]
+    },
+    {
+      "name": "CloudWatch",
+      "category": "cloud",
+      "aliases": [
+        "amazon cloudwatch"
+      ]
+    },
+    {
+      "name": "EC2",
+      "category": "cloud",
+      "aliases": [
+        "amazon ec2"
+      ]
+    },
+    {
+      "name": "GCP",
+      "category": "cloud",
+      "aliases": [
+        "google cloud",
+        "google cloud platform"
+      ]
+    },
+    {
+      "name": "Google Kubernetes Engine",
+      "category": "cloud",
+      "aliases": [
+        "gke"
+      ]
+    },
+    {
+      "name": "IAM",
+      "category": "cloud",
+      "aliases": [
+        "identity and access management"
+      ]
+    },
+    {
+      "name": "S3",
+      "category": "cloud",
+      "aliases": [
+        "amazon s3"
+      ]
+    },
+    {
+      "name": "Drupal",
+      "category": "cms",
+      "aliases": []
+    },
+    {
+      "name": "Joomla",
+      "category": "cms",
+      "aliases": []
+    },
+    {
+      "name": "Magento",
+      "category": "cms",
+      "aliases": []
+    },
+    {
+      "name": "Shopify",
+      "category": "cms",
+      "aliases": []
+    },
+    {
+      "name": "WooCommerce",
+      "category": "cms",
+      "aliases": [
+        "woo commerce"
+      ]
+    },
+    {
+      "name": "WordPress",
+      "category": "cms",
+      "aliases": []
+    },
+    {
+      "name": "Airbyte",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Airflow",
+      "category": "data",
+      "aliases": [
+        "apache airflow"
+      ]
+    },
+    {
+      "name": "Alteryx",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Apache Beam",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Apache Flink",
+      "category": "data",
+      "aliases": [
+        "flink"
+      ]
+    },
+    {
+      "name": "Apache NiFi",
+      "category": "data",
+      "aliases": [
+        "nifi"
+      ]
+    },
+    {
+      "name": "Apache Superset",
+      "category": "data",
+      "aliases": [
+        "superset"
+      ]
+    },
+    {
+      "name": "Dagster",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Data Warehousing",
+      "category": "data",
+      "aliases": [
+        "data warehouse"
+      ]
+    },
+    {
+      "name": "dbt",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Delta Lake",
+      "category": "data",
+      "aliases": [
+        "deltalake"
+      ]
+    },
+    {
+      "name": "ETL",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Fivetran",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Hadoop",
+      "category": "data",
+      "aliases": [
+        "apache hadoop"
+      ]
+    },
+    {
+      "name": "Hive",
+      "category": "data",
+      "aliases": [
+        "apache hive"
+      ]
+    },
+    {
+      "name": "Informatica",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Kafka",
+      "category": "data",
+      "aliases": [
+        "apache kafka"
+      ]
+    },
+    {
+      "name": "MQTT",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "NumPy",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Pandas",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Prefect",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "Spark",
+      "category": "data",
+      "aliases": [
+        "apache spark",
+        "pyspark"
+      ]
+    },
+    {
+      "name": "Talend",
+      "category": "data",
+      "aliases": []
+    },
+    {
+      "name": "BigQuery",
+      "category": "database",
+      "aliases": [
+        "big query",
+        "google bigquery"
+      ]
+    },
+    {
+      "name": "Cassandra",
+      "category": "database",
+      "aliases": [
+        "apache cassandra"
+      ]
+    },
+    {
+      "name": "Cosmos DB",
+      "category": "database",
+      "aliases": [
+        "cosmosdb",
+        "azure cosmos db"
+      ]
+    },
+    {
+      "name": "Databricks",
+      "category": "database",
+      "aliases": []
+    },
+    {
+      "name": "DB2",
+      "category": "database",
+      "aliases": [
+        "ibm db2"
+      ]
+    },
+    {
+      "name": "DynamoDB",
+      "category": "database",
+      "aliases": [
+        "dynamo db"
+      ]
+    },
+    {
+      "name": "Elasticsearch",
+      "category": "database",
+      "aliases": [
+        "elastic search"
+      ]
+    },
+    {
+      "name": "Firebase",
+      "category": "database",
+      "aliases": []
+    },
+    {
+      "name": "MariaDB",
+      "category": "database",
+      "aliases": [
+        "maria db"
+      ]
+    },
+    {
+      "name": "MongoDB",
+      "category": "database",
+      "aliases": [
+        "mongo"
+      ]
+    },
+    {
+      "name": "MySQL",
+      "category": "database",
+      "aliases": [
+        "my sql"
+      ]
+    },
+    {
+      "name": "Neo4j",
+      "category": "database",
+      "aliases": []
+    },
+    {
+      "name": "NoSQL",
+      "category": "database",
+      "aliases": []
+    },
+    {
+      "name": "OpenSearch",
+      "category": "database",
+      "aliases": [
+        "open search"
+      ]
+    },
+    {
+      "name": "Oracle Database",
+      "category": "database",
+      "aliases": [
+        "oracle",
+        "oracle db",
+        "oracle sql"
+      ]
+    },
+    {
+      "name": "Oracle EBS",
+      "category": "database",
+      "aliases": [
+        "ebs",
+        "oracle e-business suite"
+      ]
+    },
+    {
+      "name": "Oracle Fusion",
+      "category": "database",
+      "aliases": [
+        "oracle fusion cloud"
+      ]
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "database",
+      "aliases": [
+        "postgres",
+        "postgre sql"
+      ]
+    },
+    {
+      "name": "Redis",
+      "category": "database",
+      "aliases": []
+    },
+    {
+      "name": "Redshift",
+      "category": "database",
+      "aliases": [
+        "amazon redshift"
+      ]
+    },
+    {
+      "name": "Snowflake",
+      "category": "database",
+      "aliases": []
+    },
+    {
+      "name": "Solr",
+      "category": "database",
+      "aliases": [
+        "apache solr"
+      ]
+    },
+    {
+      "name": "SQL Server",
+      "category": "database",
+      "aliases": [
+        "mssql",
+        "ms sql",
+        "microsoft sql server",
+        "sqlserver"
+      ]
+    },
+    {
+      "name": "SQLite",
+      "category": "database",
+      "aliases": []
+    },
+    {
+      "name": "SSIS",
+      "category": "database",
+      "aliases": [
+        "sql server integration services"
+      ]
+    },
+    {
+      "name": "SSRS",
+      "category": "database",
+      "aliases": [
+        "sql server reporting services"
+      ]
+    },
+    {
+      "name": "Supabase",
+      "category": "database",
+      "aliases": []
+    },
+    {
+      "name": "Adobe XD",
+      "category": "design",
+      "aliases": []
+    },
+    {
+      "name": "Canva",
+      "category": "design",
+      "aliases": []
+    },
+    {
+      "name": "Figma",
+      "category": "design",
+      "aliases": []
+    },
+    {
+      "name": "Illustrator",
+      "category": "design",
+      "aliases": [
+        "adobe illustrator"
+      ]
+    },
+    {
+      "name": "InVision",
+      "category": "design",
+      "aliases": []
+    },
+    {
+      "name": "Photoshop",
+      "category": "design",
+      "aliases": [
+        "adobe photoshop"
+      ]
+    },
+    {
+      "name": "Sketch",
+      "category": "design",
+      "aliases": []
+    },
+    {
+      "name": "UI/UX",
+      "category": "design",
+      "aliases": [
+        "ui ux",
+        "ux",
+        "ux design"
+      ]
+    },
+    {
+      "name": "Ansible",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Argo CD",
+      "category": "devops",
+      "aliases": [
+        "argocd"
+      ]
+    },
+    {
+      "name": "Azure DevOps",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Bitbucket",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "CentOS",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "CI/CD",
+      "category": "devops",
+      "aliases": [
+        "cicd",
+        "continuous integration",
+        "continuous delivery"
+      ]
+    },
+    {
+      "name": "CircleCI",
+      "category": "devops",
+      "aliases": [
+        "circle ci"
+      ]
+    },
+    {
+      "name": "Datadog",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Docker",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Docker Compose",
+      "category": "devops",
+      "aliases": [
+        "docker-compose"
+      ]
+    },
+    {
+      "name": "ELK Stack",
+      "category": "devops",
+      "aliases": [
+        "elk",
+        "elastic stack"
+      ]
+    },
+    {
+      "name": "Git",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "GitHub",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "GitHub Actions",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "GitLab",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "GitLab CI",
+      "category": "devops",
+      "aliases": [
+        "gitlab ci/cd"
+      ]
+    },
+    {
+      "name": "Grafana",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Grafana Loki",
+      "category": "devops",
+      "aliases": [
+        "loki"
+      ]
+    },
+    {
+      "name": "Helm",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Istio",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Jenkins",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Kibana",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Kubernetes",
+      "category": "devops",
+      "aliases": [
+        "k8s"
+      ]
+    },
+    {
+      "name": "Kustomize",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Linux",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Logstash",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "New Relic",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "npm",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "OpenShift",
+      "category": "devops",
+      "aliases": [
+        "open shift"
+      ]
+    },
+    {
+      "name": "Packer",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "pip",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "pnpm",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Podman",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Prometheus",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Pulumi",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Puppet",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "RHEL",
+      "category": "devops",
+      "aliases": [
+        "red hat",
+        "red hat enterprise linux"
+      ]
+    },
+    {
+      "name": "Snyk",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "SonarQube",
+      "category": "devops",
+      "aliases": [
+        "sonar"
+      ]
+    },
+    {
+      "name": "Splunk",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Subversion",
+      "category": "devops",
+      "aliases": [
+        "svn"
+      ]
+    },
+    {
+      "name": "TeamCity",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Terraform",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Travis CI",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Ubuntu",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Vagrant",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Yarn",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Zsh",
+      "category": "devops",
+      "aliases": []
+    },
+    {
+      "name": "Dynamics 365",
+      "category": "enterprise",
+      "aliases": [
+        "d365",
+        "microsoft dynamics"
+      ]
+    },
+    {
+      "name": "ERPNext",
+      "category": "enterprise",
+      "aliases": [
+        "erp next"
+      ]
+    },
+    {
+      "name": "Odoo",
+      "category": "enterprise",
+      "aliases": []
+    },
+    {
+      "name": "PeopleSoft",
+      "category": "enterprise",
+      "aliases": []
+    },
+    {
+      "name": "QuickBooks",
+      "category": "enterprise",
+      "aliases": []
+    },
+    {
+      "name": "Salesforce",
+      "category": "enterprise",
+      "aliases": [
+        "sfdc"
+      ]
+    },
+    {
+      "name": "SAP",
+      "category": "enterprise",
+      "aliases": []
+    },
+    {
+      "name": "SAP BusinessObjects",
+      "category": "enterprise",
+      "aliases": [
+        "businessobjects"
+      ]
+    },
+    {
+      "name": "SAP HANA",
+      "category": "enterprise",
+      "aliases": [
+        "hana",
+        "s4hana",
+        "s/4hana"
+      ]
+    },
+    {
+      "name": "SAP SuccessFactors",
+      "category": "enterprise",
+      "aliases": [
+        "successfactors"
+      ]
+    },
+    {
+      "name": "ServiceNow",
+      "category": "enterprise",
+      "aliases": []
+    },
+    {
+      "name": "Tally",
+      "category": "enterprise",
+      "aliases": [
+        "tally erp",
+        "tally prime"
+      ]
+    },
+    {
+      "name": "Workday",
+      "category": "enterprise",
+      "aliases": []
+    },
+    {
+      "name": "Zoho",
+      "category": "enterprise",
+      "aliases": []
+    },
+    {
+      "name": "Angular",
+      "category": "frontend",
+      "aliases": [
+        "angularjs",
+        "angular.js"
+      ]
+    },
+    {
+      "name": "Ant Design",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Babel",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Bootstrap",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Chakra UI",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "D3.js",
+      "category": "frontend",
+      "aliases": [
+        "d3",
+        "d3js"
+      ]
+    },
+    {
+      "name": "Ember.js",
+      "category": "frontend",
+      "aliases": [
+        "ember",
+        "emberjs"
+      ]
+    },
+    {
+      "name": "ESLint",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "jQuery",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Material UI",
+      "category": "frontend",
+      "aliases": [
+        "mui",
+        "material-ui"
+      ]
+    },
+    {
+      "name": "MobX",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Next.js",
+      "category": "frontend",
+      "aliases": [
+        "nextjs",
+        "next js"
+      ]
+    },
+    {
+      "name": "Nuxt.js",
+      "category": "frontend",
+      "aliases": [
+        "nuxt",
+        "nuxtjs",
+        "nuxt js"
+      ]
+    },
+    {
+      "name": "Prettier",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "React",
+      "category": "frontend",
+      "aliases": [
+        "react.js",
+        "reactjs",
+        "react js"
+      ]
+    },
+    {
+      "name": "Redux",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "RxJS",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Sass",
+      "category": "frontend",
+      "aliases": [
+        "scss"
+      ]
+    },
+    {
+      "name": "Storybook",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Svelte",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "frontend",
+      "aliases": [
+        "tailwind",
+        "tailwindcss"
+      ]
+    },
+    {
+      "name": "Three.js",
+      "category": "frontend",
+      "aliases": [
+        "threejs"
+      ]
+    },
+    {
+      "name": "Vite",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Vue.js",
+      "category": "frontend",
+      "aliases": [
+        "vue",
+        "vuejs",
+        "vue js"
+      ]
+    },
+    {
+      "name": "Webpack",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "Zustand",
+      "category": "frontend",
+      "aliases": []
+    },
+    {
+      "name": "ABAP",
+      "category": "language",
+      "aliases": [
+        "sap abap"
+      ]
+    },
+    {
+      "name": "Assembly",
+      "category": "language",
+      "aliases": [
+        "asm"
+      ]
+    },
+    {
+      "name": "Bash",
+      "category": "language",
+      "aliases": [
+        "bash scripting"
+      ]
+    },
+    {
+      "name": "C",
+      "category": "language",
+      "aliases": [
+        "c language",
+        "c programming",
+        "ansi c",
+        "embedded c"
+      ]
+    },
+    {
+      "name": "C#",
+      "category": "language",
+      "aliases": [
+        "csharp",
+        "c sharp"
+      ]
+    },
+    {
+      "name": "C++",
+      "category": "language",
+      "aliases": [
+        "cpp",
+        "c plus plus",
+        "cxx",
+        "c++11",
+        "c++14",
+        "c++17",
+        "c++20",
+        "c++23"
+      ]
+    },
+    {
+      "name": "COBOL",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "CSS",
+      "category": "language",
+      "aliases": [
+        "css3"
+      ]
+    },
+    {
+      "name": "Dart",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Elixir",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "F#",
+      "category": "language",
+      "aliases": [
+        "fsharp",
+        "f sharp"
+      ]
+    },
+    {
+      "name": "Go",
+      "category": "language",
+      "aliases": [
+        "golang",
+        "go lang",
+        "go language"
+      ]
+    },
+    {
+      "name": "GraphQL",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Groovy",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Haskell",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "HTML",
+      "category": "language",
+      "aliases": [
+        "html5"
+      ]
+    },
+    {
+      "name": "Java",
+      "category": "language",
+      "aliases": [
+        "java8",
+        "java11",
+        "java17",
+        "java 8",
+        "java 11",
+        "java 17"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "category": "language",
+      "aliases": [
+        "js",
+        "ecmascript",
+        "es6"
+      ]
+    },
+    {
+      "name": "Julia",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Kotlin",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Lua",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "MATLAB",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Objective-C",
+      "category": "language",
+      "aliases": [
+        "objective c",
+        "objc"
+      ]
+    },
+    {
+      "name": "Perl",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "PHP",
+      "category": "language",
+      "aliases": [
+        "php8",
+        "php 8"
+      ]
+    },
+    {
+      "name": "PL/SQL",
+      "category": "language",
+      "aliases": [
+        "plsql",
+        "pl sql"
+      ]
+    },
+    {
+      "name": "PowerShell",
+      "category": "language",
+      "aliases": [
+        "power shell"
+      ]
+    },
+    {
+      "name": "Python",
+      "category": "language",
+      "aliases": [
+        "python3",
+        "python 3"
+      ]
+    },
+    {
+      "name": "R",
+      "category": "language",
+      "aliases": [
+        "r language",
+        "r programming",
+        "rstats"
+      ]
+    },
+    {
+      "name": "Ruby",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Rust",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "SAS",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Scala",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "Solidity",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "SQL",
+      "category": "language",
+      "aliases": [
+        "structured query language"
+      ]
+    },
+    {
+      "name": "Swift",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "T-SQL",
+      "category": "language",
+      "aliases": [
+        "tsql",
+        "transact-sql",
+        "transact sql"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "category": "language",
+      "aliases": [
+        "ts"
+      ]
+    },
+    {
+      "name": "VBA",
+      "category": "language",
+      "aliases": [
+        "visual basic for applications"
+      ]
+    },
+    {
+      "name": "Visual Basic",
+      "category": "language",
+      "aliases": [
+        "vb.net",
+        "vbnet",
+        "visual basic .net"
+      ]
+    },
+    {
+      "name": "XML",
+      "category": "language",
+      "aliases": []
+    },
+    {
+      "name": "YAML",
+      "category": "language",
+      "aliases": [
+        "yml"
+      ]
+    },
+    {
+      "name": "A/B Testing",
+      "category": "machine_learning",
+      "aliases": [
+        "ab testing",
+        "a/b tests"
+      ]
+    },
+    {
+      "name": "AI",
+      "category": "machine_learning",
+      "aliases": [
+        "artificial intelligence"
+      ]
+    },
+    {
+      "name": "Computer Vision",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "Deep Learning",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "Feature Engineering",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "Hugging Face",
+      "category": "machine_learning",
+      "aliases": [
+        "huggingface"
+      ]
+    },
+    {
+      "name": "Keras",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "LangChain",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "LLM",
+      "category": "machine_learning",
+      "aliases": [
+        "large language model",
+        "large language models"
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "category": "machine_learning",
+      "aliases": [
+        "ml"
+      ]
+    },
+    {
+      "name": "MLflow",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "NLP",
+      "category": "machine_learning",
+      "aliases": [
+        "natural language processing"
+      ]
+    },
+    {
+      "name": "NLTK",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "OpenCV",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "PyTorch",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "RAG",
+      "category": "machine_learning",
+      "aliases": [
+        "retrieval augmented generation",
+        "retrieval-augmented generation"
+      ]
+    },
+    {
+      "name": "scikit-learn",
+      "category": "machine_learning",
+      "aliases": [
+        "scikit learn",
+        "sklearn"
+      ]
+    },
+    {
+      "name": "spaCy",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "TensorFlow",
+      "category": "machine_learning",
+      "aliases": []
+    },
+    {
+      "name": "Agile",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "BDD",
+      "category": "methodology",
+      "aliases": [
+        "behavior driven development",
+        "behaviour driven development",
+        "behavior-driven development"
+      ]
+    },
+    {
+      "name": "DevOps",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "DevSecOps",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "ITIL",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "Kanban",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "MLOps",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "PMP",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "PRINCE2",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "Scrum",
+      "category": "methodology",
+      "aliases": []
+    },
+    {
+      "name": "TDD",
+      "category": "methodology",
+      "aliases": [
+        "test driven development",
+        "test-driven development"
+      ]
+    },
+    {
+      "name": ".NET MAUI",
+      "category": "mobile",
+      "aliases": [
+        "net maui",
+        "maui"
+      ]
+    },
+    {
+      "name": "Android",
+      "category": "mobile",
+      "aliases": []
+    },
+    {
+      "name": "Flutter",
+      "category": "mobile",
+      "aliases": []
+    },
+    {
+      "name": "Ionic",
+      "category": "mobile",
+      "aliases": []
+    },
+    {
+      "name": "iOS",
+      "category": "mobile",
+      "aliases": []
+    },
+    {
+      "name": "Jetpack Compose",
+      "category": "mobile",
+      "aliases": []
+    },
+    {
+      "name": "React Native",
+      "category": "mobile",
+      "aliases": [
+        "react-native"
+      ]
+    },
+    {
+      "name": "SwiftUI",
+      "category": "mobile",
+      "aliases": [
+        "swift ui"
+      ]
+    },
+    {
+      "name": "Unity",
+      "category": "mobile",
+      "aliases": []
+    },
+    {
+      "name": "Unreal Engine",
+      "category": "mobile",
+      "aliases": [
+        "unreal"
+      ]
+    },
+    {
+      "name": "Xamarin",
+      "category": "mobile",
+      "aliases": []
+    },
+    {
+      "name": "CCNA",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "CCNP",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "Cisco",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "DHCP",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "DNS",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "Exchange Server",
+      "category": "networking",
+      "aliases": [
+        "microsoft exchange"
+      ]
+    },
+    {
+      "name": "Firewall",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "Fortinet",
+      "category": "networking",
+      "aliases": [
+        "fortigate"
+      ]
+    },
+    {
+      "name": "Hyper-V",
+      "category": "networking",
+      "aliases": [
+        "hyperv"
+      ]
+    },
+    {
+      "name": "MCSA",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "MCSE",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "Palo Alto",
+      "category": "networking",
+      "aliases": [
+        "palo alto networks"
+      ]
+    },
+    {
+      "name": "RHCE",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "TCP/IP",
+      "category": "networking",
+      "aliases": [
+        "tcp ip"
+      ]
+    },
+    {
+      "name": "VMware",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "VPN",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "Windows Server",
+      "category": "networking",
+      "aliases": []
+    },
+    {
+      "name": "Active Directory",
+      "category": "security",
+      "aliases": [
+        "active directory domain services"
+      ]
+    },
+    {
+      "name": "Burp Suite",
+      "category": "security",
+      "aliases": [
+        "burp"
+      ]
+    },
+    {
+      "name": "CEH",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "CISSP",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "CompTIA",
+      "category": "security",
+      "aliases": [
+        "comptia a+"
+      ]
+    },
+    {
+      "name": "CSPM",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "DAST",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "EDR",
+      "category": "security",
+      "aliases": [
+        "endpoint detection and response"
+      ]
+    },
+    {
+      "name": "GDPR",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "ISO 27001",
+      "category": "security",
+      "aliases": [
+        "iso27001"
+      ]
+    },
+    {
+      "name": "JWT",
+      "category": "security",
+      "aliases": [
+        "json web token",
+        "json web tokens"
+      ]
+    },
+    {
+      "name": "LDAP",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "Metasploit",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "Nmap",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "OAuth",
+      "category": "security",
+      "aliases": [
+        "oauth2",
+        "oauth 2",
+        "oauth 2.0"
+      ]
+    },
+    {
+      "name": "OIDC",
+      "category": "security",
+      "aliases": [
+        "openid connect",
+        "open id connect"
+      ]
+    },
+    {
+      "name": "OSCP",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "OWASP",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "PCI DSS",
+      "category": "security",
+      "aliases": [
+        "pci-dss",
+        "pcidss"
+      ]
+    },
+    {
+      "name": "Penetration Testing",
+      "category": "security",
+      "aliases": [
+        "pen testing",
+        "pentest",
+        "pentesting"
+      ]
+    },
+    {
+      "name": "PKI",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "SAML",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "SAST",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "Security+",
+      "category": "security",
+      "aliases": [
+        "comptia security+"
+      ]
+    },
+    {
+      "name": "SIEM",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "SOAR",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "SOC",
+      "category": "security",
+      "aliases": [
+        "security operations center"
+      ]
+    },
+    {
+      "name": "SOC 2",
+      "category": "security",
+      "aliases": [
+        "soc2"
+      ]
+    },
+    {
+      "name": "TLS",
+      "category": "security",
+      "aliases": [
+        "ssl",
+        "ssl/tls"
+      ]
+    },
+    {
+      "name": "Wireshark",
+      "category": "security",
+      "aliases": []
+    },
+    {
+      "name": "Appium",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Cucumber",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Cypress",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Gatling",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Jest",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "JMeter",
+      "category": "testing",
+      "aliases": [
+        "apache jmeter"
+      ]
+    },
+    {
+      "name": "JUnit",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "k6",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "LoadRunner",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Mocha",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Mockito",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Playwright",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Puppeteer",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "pytest",
+      "category": "testing",
+      "aliases": [
+        "py.test"
+      ]
+    },
+    {
+      "name": "QA",
+      "category": "testing",
+      "aliases": [
+        "quality assurance"
+      ]
+    },
+    {
+      "name": "Selenium",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "SoapUI",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "TestNG",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Vitest",
+      "category": "testing",
+      "aliases": []
+    },
+    {
+      "name": "Confluence",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "Eclipse",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "IntelliJ IDEA",
+      "category": "tools",
+      "aliases": [
+        "intellij"
+      ]
+    },
+    {
+      "name": "Jira",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "Microsoft 365",
+      "category": "tools",
+      "aliases": [
+        "office 365",
+        "o365",
+        "m365"
+      ]
+    },
+    {
+      "name": "Microsoft Outlook",
+      "category": "tools",
+      "aliases": [
+        "ms outlook"
+      ]
+    },
+    {
+      "name": "Microsoft Teams",
+      "category": "tools",
+      "aliases": [
+        "ms teams"
+      ]
+    },
+    {
+      "name": "Microsoft Word",
+      "category": "tools",
+      "aliases": [
+        "ms word"
+      ]
+    },
+    {
+      "name": "OneDrive",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "Postman",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "Power Apps",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "Power Automate",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "Power Platform",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "SharePoint",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "Visual Studio",
+      "category": "tools",
+      "aliases": []
+    },
+    {
+      "name": "VS Code",
+      "category": "tools",
+      "aliases": [
+        "visual studio code"
+      ]
+    }
+  ]
+}

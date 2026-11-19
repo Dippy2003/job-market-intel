@@ -16,10 +16,21 @@ class Settings(BaseSettings):
     database_url: str = Field(..., description="PostgreSQL connection string")
     llm_api_key: str | None = None
     llm_model: str = "gemini-1.5-flash"
+    # Call the LLM only when the matcher finds fewer skills than this. 0 disables it.
+    llm_min_skills: int = Field(2, ge=0)
     scraper_user_agent: str = "job-market-intel/0.1 (student research project)"
     scraper_min_delay: float = Field(2.0, ge=2.0)
     scraper_max_delay: float = 4.0
     log_level: str = "INFO"
+
+    @field_validator("llm_api_key", mode="before")
+    @classmethod
+    def blank_llm_key_is_unset(cls, value: object) -> str | None:
+        """Treat a blank LLM_API_KEY as unset so the fallback stays off."""
+        if value is None:
+            return None
+        text = str(value).strip()
+        return text or None
 
     @field_validator("database_url")
     @classmethod

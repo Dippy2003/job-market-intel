@@ -19,3 +19,11 @@ def test_defaults(monkeypatch):
     s = Settings(_env_file=None)
     assert s.scraper_min_delay >= 2.0
     assert s.llm_api_key is None
+    assert s.llm_model == "gemini-1.5-flash"
+    assert s.llm_min_skills == 2
+
+
+def test_blank_llm_key_is_unset(monkeypatch):
+    monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@host/db")
+    monkeypatch.setenv("LLM_API_KEY", "  ")
+    assert Settings(_env_file=None).llm_api_key is None
