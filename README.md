@@ -203,5 +203,5 @@ If you run it, please keep these limits in place.
 
 ## 👤 Author
 
-**Amarasie Piyathissa** — Computer Engineering student, University of Ruhuna  
+**Dipna Wijesinghe** — Data science Student  
 GitHub: [@Dippy2003](https://github.com/Dippy2003)
