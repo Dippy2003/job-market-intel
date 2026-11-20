@@ -16,6 +16,8 @@ python -m pipeline.run_daily --source topjobs --max-jobs 5 --dry-run
 python -m pipeline.run_daily --skip-scrape            # clean + dedupe only
 python -m pipeline.extract_skills                     # skills for jobs that have none yet
 python -m pipeline.extract_skills --limit 50 --dry-run
+python -m pipeline.compute_trends                     # weekly skill demand, then an 8-week forecast
+python -m pipeline.compute_trends --top 15 --dry-run
 ```
 
 The same `python -m` commands work in PowerShell. On Windows the venv lives at `.venv\Scripts\activate`.
@@ -39,3 +41,17 @@ Short names are whole tokens only. `C` does not match inside `C++`, `C#`, or `Ob
 Matcher rows use `method = 'spacy'` and confidence `0.9500` (`0.8500` for C, R, and Go). If a job has fewer than `LLM_MIN_SKILLS` matches (default 2) and `LLM_API_KEY` is set, the fallback asks Gemini (`LLM_MODEL`, default `gemini-1.5-flash`) for catalog names and stores them with `method = 'llm'` and confidence `0.6500`. A blank key skips that call. The key is read from `.env` through `config.py` and is not hardcoded. Put a Gemini API key in `LLM_API_KEY` only if you want the fallback.
 
 Re-running is safe. Skills upsert on `name`, links upsert on `(job_id, skill_id)`, and jobs that already have links are skipped. A job that matches nothing is left pending, so a later run can fill it in. `--dry-run` prints the summary and does not write.
+
+## Skill trends and forecasts
+
+`python -m pipeline.compute_trends` rebuilds weekly demand and an 8-week forecast, then prints the top skills for the latest week in the data.
+
+```bash
+python -m pipeline.compute_trends
+python -m pipeline.compute_trends --top 15
+python -m pipeline.compute_trends --dry-run
+```
+
+Weeks start on Monday. A job counts on `posted_date`. If that is missing, it counts on the Sri Lanka date of `scraped_at` (UTC+5:30). Rows with `duplicate_of` set are left out. `count` is jobs that list the skill. `share` is that count divided by every job that week, including jobs with no skills. Trend rows upsert on `(skill_id, period_start)`.
+
+Prophet (`prophet` in `requirements.txt`, saved as `prophet-weekly-1`) runs when a skill's span is at least eight weeks. Seasonality stays off: the series is already weekly, and the corpus is only a few weeks (about 200 jobs). Two to seven weeks use a linear fallback (`linear-fallback-1`): least squares on the week index, with an 80% band (20% of the level when only two points exist). Counts are clipped at zero. A skill seen in only one week is skipped. A missing Prophet install or a failed fit uses the same fallback and does not stop the run. The first real Prophet fit compiles a Stan model; later fits reuse it. Forecast rows upsert on `(skill_id, ds, model_version)`. A re-run deletes demand rows and future forecast rows the current jobs no longer support, and leaves older forecast dates in place. `--dry-run` prints the ranking and writes nothing. `--top` only changes how many skills are printed.

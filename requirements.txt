@@ -20,7 +20,8 @@ pandas>=2.2
 # download en_core_web_sm. Added because pipeline.extract_skills imports spaCy.
 spacy>=3.7
 # scikit-learn>=1.4
-# prophet>=1.1
+# Weekly skill forecasts. Imported lazily by analytics.forecast; tests mock the fit.
+prophet>=1.1
 # sentence-transformers>=2.6
 
 # API (step 8)
