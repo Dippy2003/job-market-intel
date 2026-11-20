@@ -7,7 +7,7 @@ from pathlib import Path
 from sqlalchemy import CheckConstraint
 
 from db import Base
-from db.models import Forecast, Job, JobSkill, RoleCluster, ScrapeRun, Skill, SkillTrend
+from db.models import Forecast, Job, JobRoleCluster, JobSkill, RoleCluster, ScrapeRun, Skill, SkillTrend
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -19,6 +19,7 @@ EXPECTED = {
     SkillTrend: "skill_trends",
     Forecast: "forecasts",
     RoleCluster: "role_clusters",
+    JobRoleCluster: "job_role_clusters",
 }
 
 
@@ -33,6 +34,7 @@ def test_skill_name_is_unique_and_job_skill_key_is_composite():
     assert [column.name for column in JobSkill.__table__.primary_key] == ["job_id", "skill_id"]
     assert [column.name for column in SkillTrend.__table__.primary_key] == ["skill_id", "period_start"]
     assert [column.name for column in Forecast.__table__.primary_key] == ["skill_id", "ds", "model_version"]
+    assert [column.name for column in JobRoleCluster.__table__.primary_key] == ["job_id"]
     checks = [c.sqltext.text for c in JobSkill.__table__.constraints if isinstance(c, CheckConstraint)]
     assert any("spacy" in text and "llm" in text for text in checks)
 
@@ -45,6 +47,10 @@ def test_foreign_keys_point_at_parent_ids():
     assert links(SkillTrend.__table__) == {("skill_id", "skills", "id")}
     assert links(Forecast.__table__) == {("skill_id", "skills", "id")}
     assert links(RoleCluster.__table__) == set()
+    assert links(JobRoleCluster.__table__) == {
+        ("job_id", "jobs", "id"),
+        ("cluster_id", "role_clusters", "id"),
+    }
 
 
 def test_alembic_env_reads_settings_url():
@@ -61,7 +67,7 @@ def test_offline_sql_builds_every_table_without_a_database():
     env = os.environ.copy()
     env["DATABASE_URL"] = "postgresql://u:p@localhost/db"
     result = subprocess.run(
-        [sys.executable, "-m", "alembic", "upgrade", "0002", "--sql"],
+        [sys.executable, "-m", "alembic", "upgrade", "0003", "--sql"],
         cwd=ROOT,
         env=env,
         capture_output=True,

@@ -1,0 +1,62 @@
+[
+  {
+    "role": "Backend",
+    "title": "Backend Engineer",
+    "count": 4,
+    "skills": [
+      {"name": "Java", "category": "language"},
+      {"name": "Spring", "category": "backend"},
+      {"name": "PostgreSQL", "category": "database"}
+    ]
+  },
+  {
+    "role": "Frontend",
+    "title": "Frontend Developer",
+    "count": 4,
+    "skills": [
+      {"name": "React", "category": "frontend"},
+      {"name": "TypeScript", "category": "language"},
+      {"name": "CSS", "category": "language"}
+    ]
+  },
+  {
+    "role": "Data/ML",
+    "title": "Data Scientist",
+    "count": 4,
+    "skills": [
+      {"name": "Python", "category": "language"},
+      {"name": "Pandas", "category": "data"},
+      {"name": "TensorFlow", "category": "machine_learning"}
+    ]
+  },
+  {
+    "role": "DevOps",
+    "title": "DevOps Engineer",
+    "count": 4,
+    "skills": [
+      {"name": "Docker", "category": "devops"},
+      {"name": "Kubernetes", "category": "devops"},
+      {"name": "Terraform", "category": "devops"}
+    ]
+  },
+  {
+    "role": "QA",
+    "title": "QA Engineer",
+    "count": 4,
+    "skills": [
+      {"name": "Selenium", "category": "testing"},
+      {"name": "Cypress", "category": "testing"},
+      {"name": "JUnit", "category": "testing"}
+    ]
+  },
+  {
+    "role": "Mobile",
+    "title": "Android Developer",
+    "count": 4,
+    "skills": [
+      {"name": "Kotlin", "category": "language"},
+      {"name": "Flutter", "category": "mobile"},
+      {"name": "Android", "category": "mobile"}
+    ]
+  }
+]

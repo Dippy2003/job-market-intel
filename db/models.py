@@ -143,7 +143,10 @@ class Forecast(Base):
 
 
 class RoleCluster(Base):
-    """Roles grouped by one clustering run. top_skills lists skill names, best first."""
+    """One role from the latest clustering run. top_skills lists skill names, best first.
+
+    A new run deletes these rows and writes a fresh set that shares one run_at.
+    """
 
     __tablename__ = "role_clusters"
     __table_args__ = (Index("role_clusters_run_at_idx", "run_at"),)
@@ -153,3 +156,20 @@ class RoleCluster(Base):
     top_skills: Mapped[list[str]] = mapped_column(ARRAY(Text))
     size: Mapped[int] = mapped_column(Integer)
     run_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class JobRoleCluster(Base):
+    """The latest role-cluster assignment for one job."""
+
+    __tablename__ = "job_role_clusters"
+    __table_args__ = (Index("job_role_clusters_cluster_id_idx", "cluster_id"),)
+
+    job_id: Mapped[int] = mapped_column(
+        BigInteger,
+        ForeignKey("jobs.id", ondelete="CASCADE"),
+        primary_key=True,
+    )
+    cluster_id: Mapped[int] = mapped_column(
+        BigInteger,
+        ForeignKey("role_clusters.id", ondelete="CASCADE"),
+    )

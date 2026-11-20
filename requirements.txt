@@ -19,7 +19,8 @@ pandas>=2.2
 # Skill extraction. PhraseMatcher runs on spacy.blank("en"), so CI does not
 # download en_core_web_sm. Added because pipeline.extract_skills imports spaCy.
 spacy>=3.7
-# scikit-learn>=1.4
+# Role clustering. pipeline.cluster_roles fits KMeans on binary skill TF-IDF.
+scikit-learn>=1.4
 # Weekly skill forecasts. Imported lazily by analytics.forecast; tests mock the fit.
 prophet>=1.1
 # sentence-transformers>=2.6

@@ -17,7 +17,7 @@
 
 ## ✨ What it does
 
-Every run collects public job ads from **ITPro.lk** and **topjobs.lk**, cleans and de-duplicates them, finds the skills mentioned in each ad, and turns those into **weekly demand numbers** and an **8-week forecast** per skill. The goal is to answer questions like *"Is demand for Docker growing in Sri Lanka?"* with data instead of guesses.
+Every run collects public job ads from **ITPro.lk** and **topjobs.lk**, cleans and de-duplicates them, finds the skills mentioned in each ad, and turns those into **weekly demand numbers**, an **8-week forecast** per skill, and **role clusters** such as Backend, Frontend, and Data/ML. The goal is to answer questions like *"Is demand for Docker growing in Sri Lanka?"* with data instead of guesses.
 
 ## 🧭 How it works
 
@@ -31,11 +31,13 @@ flowchart LR
     G[Gemini fallback<br/>optional] -.-> E
     E --> F[(skills + job_skills)]
     F --> H[Weekly trends<br/>count and share per skill]
+    F --> M[Role clusters<br/>KMeans on skills]
     H --> I{8+ weeks<br/>of data?}
     I -- yes --> J[Prophet forecast]
     I -- "2 to 7 weeks" --> K[Linear fallback forecast]
     J --> L[(skill_trends + forecasts)]
     K --> L
+    M --> N[(role_clusters)]
 ```
 
 ## 🚀 Features and status
@@ -45,10 +47,10 @@ flowchart LR
 | ITPro.lk scraper | ✅ Done | Category pages, 10 s crawl delay, raw HTML archived under `data/raw/` |
 | topjobs.lk scraper | ✅ Done | Public "Recent 100 Jobs" page, 10 s+ delay, up to 100 ads per run |
 | Cleaning and de-duplication | ✅ Done | Normalized titles and locations; the same job on two sites is flagged via `duplicate_of` |
-| Database schema + Alembic migrations | ✅ Done | `jobs`, `scrape_runs`, `skills`, `job_skills`, `skill_trends`, `forecasts`, `role_clusters` |
+| Database schema + Alembic migrations | ✅ Done | `jobs`, `scrape_runs`, `skills`, `job_skills`, `skill_trends`, `forecasts`, `role_clusters`, `job_role_clusters` |
 | Skill extraction | ✅ Done | 391-skill taxonomy, spaCy PhraseMatcher, optional Gemini fallback |
 | Weekly trends + forecasts | ✅ Done | Prophet, or a linear fallback when there is too little history |
-| Role clustering | 🚧 In progress | `role_clusters` table exists; the clustering step is being built |
+| Role clustering | ✅ Done | KMeans on binary skill TF-IDF; labels such as Backend, Frontend, Data/ML |
 | REST API, dashboard, CV skill-gap checker | 🗓️ Planned | `api/` and `dashboard/` are placeholders for now |
 
 ## 🛠️ Tech stack
@@ -58,6 +60,7 @@ flowchart LR
 - **Database:** PostgreSQL on [Neon](https://neon.tech), via SQLAlchemy 2 and `psycopg` 3, with Alembic migrations
 - **NLP:** spaCy (`PhraseMatcher` on a blank English pipeline, so no model download is needed), optional Gemini LLM fallback
 - **Forecasting:** Prophet, with a least-squares linear fallback
+- **Clustering:** scikit-learn KMeans on binary TF-IDF skill vectors
 - **Config:** `pydantic-settings` and `python-dotenv`
 - **Quality:** `pytest` and `ruff`
 
@@ -66,9 +69,9 @@ flowchart LR
 ```text
 job-market-intel/
 ├── scrapers/            # base.py (polite fetching, retries, robots.txt), itpro.py, topjobs.py
-├── pipeline/            # run_daily.py, clean.py, dedupe.py, extract_skills.py, compute_trends.py
+├── pipeline/            # run_daily.py, clean.py, dedupe.py, extract_skills.py, compute_trends.py, cluster_roles.py
 ├── extraction/          # skills.py (PhraseMatcher), llm.py (optional Gemini fallback)
-├── analytics/           # trends.py (weekly counts), forecast.py (Prophet + linear fallback)
+├── analytics/           # trends.py, forecast.py (Prophet + linear fallback), clusters.py
 ├── db/                  # SQLAlchemy models, Alembic migrations (db/alembic), legacy SQL
 ├── data/
 │   └── skills_taxonomy.json   # 391 skills with categories and aliases
@@ -144,9 +147,13 @@ python -m pipeline.extract_skills --limit 50 --dry-run
 # 3. Weekly demand + 8-week forecasts
 python -m pipeline.compute_trends
 python -m pipeline.compute_trends --top 15 --dry-run
+
+# 4. Group jobs into role clusters
+python -m pipeline.cluster_roles
+python -m pipeline.cluster_roles --k 8 --dry-run
 ```
 
-All commands work the same in PowerShell. `--dry-run` computes and prints without writing to the database, and re-running any step is safe (rows are upserted).
+All commands work the same in PowerShell. `--dry-run` computes and prints without writing to the database. Re-running a step is safe: skills, trends, and forecasts are upserted, and clustering replaces the previous run.
 
 ## 🔍 How the analysis works
 
@@ -156,6 +163,8 @@ All commands work the same in PowerShell. `--dry-run` computes and prints withou
 
 **Forecasts.** With eight or more weeks of history a skill is forecast with **Prophet** (`prophet-weekly-1`). With two to seven weeks it uses a **linear fallback** (`linear-fallback-1`) with an 80% band. Counts never go below zero, and skills seen in only one week are skipped. This keeps the forecast honest while the dataset is still young.
 
+**Role clusters.** `python -m pipeline.cluster_roles` groups non-duplicate jobs that already have skills. Each job is a binary TF-IDF vector of its skill names plus useful words from the title (seniority and generic words such as "engineer" are left out). KMeans uses `random_state=42`. The default `--k` is 6, and it drops when there are fewer distinct skill profiles. Fewer than 2 jobs with skills is reported and not clustered. Labels come from the skills and titles that dominate a cluster, for example Backend, Frontend, Data/ML, DevOps, QA, or Mobile. Two clusters that would share a name get the top skill appended. The run replaces the previous one: `role_clusters` stores the label, top skills, size, and `run_at`, and `job_role_clusters` stores which job is in which cluster (Alembic `0003`). If the database is already at `0002`, apply the new table with `alembic upgrade head`.
+
 ## ✅ Tests and linting
 
 ```bash
@@ -163,7 +172,7 @@ pytest -q
 ruff check .
 ```
 
-The test suite runs offline using saved HTML fixtures, and the Prophet fit is mocked.
+The test suite runs offline using saved HTML and job fixtures. The Prophet fit is mocked, and role clustering does not call the network.
 
 ## 🗺️ Roadmap
 
@@ -173,7 +182,7 @@ The test suite runs offline using saved HTML fixtures, and the Prophet fit is mo
 - [x] Cleaning and de-duplication
 - [x] Skill extraction (spaCy + optional Gemini fallback)
 - [x] Weekly trends and 8-week forecasts (Prophet + linear fallback)
-- [ ] Role clustering *(in progress)*
+- [x] Role clustering (KMeans on extracted skills)
 - [ ] FastAPI REST API
 - [ ] Dashboard
 - [ ] CI with GitHub Actions
