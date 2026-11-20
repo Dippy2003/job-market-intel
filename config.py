@@ -22,6 +22,8 @@ class Settings(BaseSettings):
     scraper_min_delay: float = Field(2.0, ge=2.0)
     scraper_max_delay: float = 4.0
     log_level: str = "INFO"
+    # Comma-separated browser origins for the read-only API. "*" allows any origin.
+    cors_origins: str = "*"
 
     @field_validator("llm_api_key", mode="before")
     @classmethod

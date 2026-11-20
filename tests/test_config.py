@@ -27,3 +27,11 @@ def test_blank_llm_key_is_unset(monkeypatch):
     monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@host/db")
     monkeypatch.setenv("LLM_API_KEY", "  ")
     assert Settings(_env_file=None).llm_api_key is None
+
+
+def test_cors_origins_default_and_override(monkeypatch):
+    monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@host/db")
+    monkeypatch.delenv("CORS_ORIGINS", raising=False)
+    assert Settings(_env_file=None).cors_origins == "*"
+    monkeypatch.setenv("CORS_ORIGINS", "http://localhost:3000, http://127.0.0.1:5173")
+    assert Settings(_env_file=None).cors_origins == "http://localhost:3000, http://127.0.0.1:5173"

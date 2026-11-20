@@ -51,7 +51,8 @@ flowchart LR
 | Skill extraction | ✅ Done | 391-skill taxonomy, spaCy PhraseMatcher, optional Gemini fallback |
 | Weekly trends + forecasts | ✅ Done | Prophet, or a linear fallback when there is too little history |
 | Role clustering | ✅ Done | KMeans on binary skill TF-IDF; labels such as Backend, Frontend, Data/ML |
-| REST API, dashboard, CV skill-gap checker | 🗓️ Planned | `api/` and `dashboard/` are placeholders for now |
+| REST API | ✅ Done | Read-only FastAPI: jobs, weekly skill demand, 8-week forecasts, role clusters |
+| Dashboard, CV skill-gap checker | 🗓️ Planned | `dashboard/` is still a placeholder |
 
 ## 🛠️ Tech stack
 
@@ -61,6 +62,7 @@ flowchart LR
 - **NLP:** spaCy (`PhraseMatcher` on a blank English pipeline, so no model download is needed), optional Gemini LLM fallback
 - **Forecasting:** Prophet, with a least-squares linear fallback
 - **Clustering:** scikit-learn KMeans on binary TF-IDF skill vectors
+- **API:** FastAPI, served with uvicorn. Interactive docs at `/docs`
 - **Config:** `pydantic-settings` and `python-dotenv`
 - **Quality:** `pytest` and `ruff`
 
@@ -75,7 +77,7 @@ job-market-intel/
 ├── db/                  # SQLAlchemy models, Alembic migrations (db/alembic), legacy SQL
 ├── data/
 │   └── skills_taxonomy.json   # 391 skills with categories and aliases
-├── api/                 # planned: FastAPI routes
+├── api/                 # read-only FastAPI routes (uvicorn api.main:app)
 ├── dashboard/           # planned
 ├── tests/               # pytest suite with HTML fixtures
 ├── config.py            # settings loaded from environment / .env
@@ -127,6 +129,7 @@ alembic upgrade head
 | `LLM_MIN_SKILLS` | no | Fallback runs only for ads with fewer matches than this (default `2`) |
 | `SCRAPER_USER_AGENT` | no | Identify your scraper and add a contact email |
 | `LOG_LEVEL` | no | Defaults to `INFO` |
+| `CORS_ORIGINS` | no | Comma-separated browser origins for the API. Defaults to `*` |
 
 Never commit your `.env` file.
 
@@ -151,7 +154,12 @@ python -m pipeline.compute_trends --top 15 --dry-run
 # 4. Group jobs into role clusters
 python -m pipeline.cluster_roles
 python -m pipeline.cluster_roles --k 8 --dry-run
+
+# 5. Read-only API (jobs, weekly skill demand, 8-week forecasts, role clusters)
+uvicorn api.main:app
 ```
+
+Interactive docs: <http://127.0.0.1:8000/docs>. The app reads `DATABASE_URL` from `.env` through `config.py`. Set `CORS_ORIGINS` when a browser on another origin should call the API.
 
 All commands work the same in PowerShell. `--dry-run` computes and prints without writing to the database. Re-running a step is safe: skills, trends, and forecasts are upserted, and clustering replaces the previous run.
 
@@ -172,7 +180,7 @@ pytest -q
 ruff check .
 ```
 
-The test suite runs offline using saved HTML and job fixtures. The Prophet fit is mocked, and role clustering does not call the network.
+The test suite runs offline using saved HTML and job fixtures. The Prophet fit is mocked, and role clustering does not call the network. API tests use FastAPI's TestClient and an in-memory SQLite database, so they do not call Neon.
 
 ## 🗺️ Roadmap
 
@@ -183,7 +191,7 @@ The test suite runs offline using saved HTML and job fixtures. The Prophet fit i
 - [x] Skill extraction (spaCy + optional Gemini fallback)
 - [x] Weekly trends and 8-week forecasts (Prophet + linear fallback)
 - [x] Role clustering (KMeans on extracted skills)
-- [ ] FastAPI REST API
+- [x] FastAPI REST API
 - [ ] Dashboard
 - [ ] CI with GitHub Actions
 - [ ] More scrapers (XpressJobs, Ikman)
