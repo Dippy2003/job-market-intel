@@ -52,7 +52,8 @@ flowchart LR
 | Weekly trends + forecasts | ✅ Done | Prophet, or a linear fallback when there is too little history |
 | Role clustering | ✅ Done | KMeans on binary skill TF-IDF; labels such as Backend, Frontend, Data/ML |
 | REST API | ✅ Done | Read-only FastAPI: jobs, weekly skill demand, 8-week forecasts, role clusters |
-| Dashboard, CV skill-gap checker | 🗓️ Planned | `dashboard/` is still a placeholder |
+| Dashboard | ✅ Done | Streamlit tabs for jobs, skill trends, 8-week forecasts, and role clusters |
+| CV skill-gap checker | 🗓️ Planned | Not started |
 
 ## 🛠️ Tech stack
 
@@ -63,6 +64,7 @@ flowchart LR
 - **Forecasting:** Prophet, with a least-squares linear fallback
 - **Clustering:** scikit-learn KMeans on binary TF-IDF skill vectors
 - **API:** FastAPI, served with uvicorn. Interactive docs at `/docs`
+- **Dashboard:** Streamlit. It calls the API over HTTP
 - **Config:** `pydantic-settings` and `python-dotenv`
 - **Quality:** `pytest` and `ruff`
 
@@ -78,7 +80,7 @@ job-market-intel/
 ├── data/
 │   └── skills_taxonomy.json   # 391 skills with categories and aliases
 ├── api/                 # read-only FastAPI routes (uvicorn api.main:app)
-├── dashboard/           # planned
+├── dashboard/           # Streamlit app (app.py) and API client (api_client.py)
 ├── tests/               # pytest suite with HTML fixtures
 ├── config.py            # settings loaded from environment / .env
 ├── alembic.ini
@@ -130,6 +132,7 @@ alembic upgrade head
 | `SCRAPER_USER_AGENT` | no | Identify your scraper and add a contact email |
 | `LOG_LEVEL` | no | Defaults to `INFO` |
 | `CORS_ORIGINS` | no | Comma-separated browser origins for the API. Defaults to `*` |
+| `API_BASE_URL` | no | Base URL of the API for the dashboard. Defaults to `http://127.0.0.1:8000` |
 
 Never commit your `.env` file.
 
@@ -157,11 +160,39 @@ python -m pipeline.cluster_roles --k 8 --dry-run
 
 # 5. Read-only API (jobs, weekly skill demand, 8-week forecasts, role clusters)
 uvicorn api.main:app
+
+# 6. Dashboard (the API must already be running; details below)
+streamlit run dashboard/app.py
 ```
 
 Interactive docs: <http://127.0.0.1:8000/docs>. The app reads `DATABASE_URL` from `.env` through `config.py`. Set `CORS_ORIGINS` when a browser on another origin should call the API.
 
 All commands work the same in PowerShell. `--dry-run` computes and prints without writing to the database. Re-running a step is safe: skills, trends, and forecasts are upserted, and clustering replaces the previous run.
+
+## 📊 Run the dashboard
+
+The Streamlit app in `dashboard/` is a view of the API. Start the API first, from the project root, so it can read `DATABASE_URL` from `.env`:
+
+```bash
+uvicorn api.main:app
+```
+
+In a second terminal, from the same directory:
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Open <http://127.0.0.1:8501>. The app calls <http://127.0.0.1:8000> unless `API_BASE_URL` is set in the environment or in `.env`.
+
+The four tabs are:
+
+- **Jobs** filters by source (`itpro`, `topjobs`, or all), a keyword (title, company, location, or description), and an exact skill name.
+- **Skill trends** is a line chart of one skill over the newest N weeks.
+- **Forecasts** ranks skills by the latest week of their stored 8-week forecast.
+- **Roles** lists each cluster with the skills that define it.
+
+Responses are cached for 10 minutes (`st.cache_data(ttl=600)`). When the API is down, the page shows **API not reachable** and tells you to start `uvicorn api.main:app`.
 
 ## 🔍 How the analysis works
 
@@ -180,7 +211,7 @@ pytest -q
 ruff check .
 ```
 
-The test suite runs offline using saved HTML and job fixtures. The Prophet fit is mocked, and role clustering does not call the network. API tests use FastAPI's TestClient and an in-memory SQLite database, so they do not call Neon.
+The test suite runs offline using saved HTML and job fixtures. The Prophet fit is mocked, and role clustering does not call the network. API tests use FastAPI's TestClient and an in-memory SQLite database, so they do not call Neon. Dashboard client tests mock `requests` and check the URL, query params, and parsed JSON for each helper.
 
 ## 🗺️ Roadmap
 
@@ -192,7 +223,7 @@ The test suite runs offline using saved HTML and job fixtures. The Prophet fit i
 - [x] Weekly trends and 8-week forecasts (Prophet + linear fallback)
 - [x] Role clustering (KMeans on extracted skills)
 - [x] FastAPI REST API
-- [ ] Dashboard
+- [x] Dashboard
 - [ ] CI with GitHub Actions
 - [ ] More scrapers (XpressJobs, Ikman)
 - [ ] Skill-extraction accuracy evaluation against a hand-labelled sample
