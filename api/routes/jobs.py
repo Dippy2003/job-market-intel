@@ -18,7 +18,7 @@ def list_jobs(
     session: Annotated[Session, Depends(get_db)],
     source: Annotated[
         str | None,
-        Query(description="Scraper name, for example itpro or topjobs."),
+        Query(description="Scraper name, for example itpro, topjobs, xpressjobs, or ikman."),
     ] = None,
     q: Annotated[
         str | None,

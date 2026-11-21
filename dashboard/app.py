@@ -177,7 +177,7 @@ def _forecast_table(items: list[dict[str, Any]], top_n: int) -> pd.DataFrame:
 def _render_jobs() -> None:
     source_col, keyword_col, skill_col = st.columns(3)
     with source_col:
-        source = st.selectbox("Source", ("All", "itpro", "topjobs"))
+        source = st.selectbox("Source", ("All", "itpro", "topjobs", "xpressjobs", "ikman"))
     with keyword_col:
         keyword = st.text_input("Keyword", placeholder="Title, company, location, or description")
     with skill_col:

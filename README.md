@@ -17,7 +17,7 @@
 
 ## ✨ What it does
 
-Every run collects public job ads from **ITPro.lk** and **topjobs.lk**, cleans and de-duplicates them, finds the skills mentioned in each ad, and turns those into **weekly demand numbers**, an **8-week forecast** per skill, and **role clusters** such as Backend, Frontend, and Data/ML. The goal is to answer questions like *"Is demand for Docker growing in Sri Lanka?"* with data instead of guesses.
+Every run collects public job ads from **ITPro.lk**, **topjobs.lk**, **XpressJobs**, and the **Ikman.lk IT category**, cleans and de-duplicates them, finds the skills mentioned in each ad, and turns those into **weekly demand numbers**, an **8-week forecast** per skill, and **role clusters** such as Backend, Frontend, and Data/ML. The goal is to answer questions like *"Is demand for Docker growing in Sri Lanka?"* with data instead of guesses.
 
 ## 🧭 How it works
 
@@ -25,6 +25,8 @@ Every run collects public job ads from **ITPro.lk** and **topjobs.lk**, cleans a
 flowchart LR
     A[ITPro.lk] --> S[Scrapers<br/>polite, robots.txt aware]
     B[topjobs.lk<br/>Recent 100] --> S
+    X[XpressJobs<br/>IT category] --> S
+    K[Ikman.lk<br/>IT jobs] --> S
     S --> C[Clean + dedupe<br/>titles, locations, duplicates]
     C --> D[(Neon Postgres<br/>jobs)]
     D --> E[Skill extraction<br/>spaCy PhraseMatcher]
@@ -46,6 +48,8 @@ flowchart LR
 | --- | --- | --- |
 | ITPro.lk scraper | ✅ Done | Category pages, 10 s crawl delay, raw HTML archived under `data/raw/` |
 | topjobs.lk scraper | ✅ Done | Public "Recent 100 Jobs" page, 10 s+ delay, up to 100 ads per run |
+| XpressJobs scraper | ✅ Done | IT category on xpress.jobs (xpressjobs.lk redirects there). Public HTML is a JavaScript shell, so this uses the site's public jobs API, which robots.txt allows. 10 s delay, 20 ads per run |
+| Ikman.lk IT scraper | ✅ Done | `it-and-network-industry-jobs` only. Wildcard robots.txt rules are honored. First page only (25 ads), 10 s delay |
 | Cleaning and de-duplication | ✅ Done | Normalized titles and locations; the same job on two sites is flagged via `duplicate_of` |
 | Database schema + Alembic migrations | ✅ Done | `jobs`, `scrape_runs`, `skills`, `job_skills`, `skill_trends`, `forecasts`, `role_clusters`, `job_role_clusters` |
 | Skill extraction | ✅ Done | 391-skill taxonomy, spaCy PhraseMatcher, optional Gemini fallback |
@@ -72,7 +76,7 @@ flowchart LR
 
 ```text
 job-market-intel/
-├── scrapers/            # base.py (polite fetching, retries, robots.txt), itpro.py, topjobs.py
+├── scrapers/            # base.py (polite fetching, retries, robots.txt), itpro.py, topjobs.py, xpressjobs.py, ikman.py
 ├── pipeline/            # run_daily.py, clean.py, dedupe.py, extract_skills.py, compute_trends.py, cluster_roles.py
 ├── extraction/          # skills.py (PhraseMatcher), llm.py (optional Gemini fallback)
 ├── analytics/           # trends.py, forecast.py (Prophet + linear fallback), clusters.py
@@ -140,9 +144,11 @@ Never commit your `.env` file.
 
 ```bash
 # 1. Scrape, clean and de-duplicate
-python -m pipeline.run_daily                              # ITPro + topjobs.lk
+python -m pipeline.run_daily                              # ITPro, topjobs, XpressJobs, Ikman IT
 python -m pipeline.run_daily --source itpro               # ITPro only
 python -m pipeline.run_daily --source topjobs             # topjobs.lk only
+python -m pipeline.run_daily --source xpressjobs          # XpressJobs IT category only
+python -m pipeline.run_daily --source ikman               # Ikman.lk IT category only
 python -m pipeline.run_daily --source topjobs --max-jobs 5 --dry-run
 python -m pipeline.run_daily --skip-scrape                # clean + dedupe existing rows only
 
@@ -187,7 +193,7 @@ Open <http://127.0.0.1:8501>. The app calls <http://127.0.0.1:8000> unless `API_
 
 The four tabs are:
 
-- **Jobs** filters by source (`itpro`, `topjobs`, or all), a keyword (title, company, location, or description), and an exact skill name.
+- **Jobs** filters by source (`itpro`, `topjobs`, `xpressjobs`, `ikman`, or all), a keyword (title, company, location, or description), and an exact skill name.
 - **Skill trends** is a line chart of one skill over the newest N weeks.
 - **Forecasts** ranks skills by the latest week of their stored 8-week forecast.
 - **Roles** lists each cluster with the skills that define it.
@@ -225,7 +231,7 @@ The test suite runs offline using saved HTML and job fixtures. The Prophet fit i
 - [x] FastAPI REST API
 - [x] Dashboard
 - [ ] CI with GitHub Actions
-- [ ] More scrapers (XpressJobs, Ikman)
+- [x] XpressJobs and Ikman.lk IT scrapers
 - [ ] Skill-extraction accuracy evaluation against a hand-labelled sample
 - [ ] CV skill-gap checker
 
@@ -234,7 +240,9 @@ The test suite runs offline using saved HTML and job fixtures. The Prophet fit i
 This is a student research project and it tries to be a good citizen:
 
 - It reads each site's `robots.txt` and skips any URL it disallows.
-- It waits **at least 10 seconds** between requests on both ITPro.lk and topjobs.lk, and the topjobs.lk scraper honors a longer `Crawl-delay` if one is ever published.
+- It waits **at least 10 seconds** between requests, and honors a longer `Crawl-delay` when a site publishes one for this agent.
+- XpressJobs public pages are a JavaScript shell. The scraper calls the site's public read API (`/api/jobs/searchJobs` and `/api/jobs/publishedJob`), which `robots.txt` allows. It does not log in or call recruiter endpoints.
+- Ikman `robots.txt` allows the IT category and ad pages, and disallows filtered, account, and edit URLs. Those wildcard rules are applied even though Python's `robotparser` does not understand `*`. Disallowed URLs are skipped and logged. Only the first category page is fetched.
 - It only reads public listing and ad pages. It never logs in, submits forms, or applies to jobs.
 - It identifies itself with a descriptive `User-Agent`. Set `SCRAPER_USER_AGENT` to include your own contact email.
 

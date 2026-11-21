@@ -1,4 +1,4 @@
-"""One entry point: scrape ITPro and topjobs.lk, then clean and dedupe."""
+"""One entry point: scrape ITPro, topjobs.lk, XpressJobs, and Ikman IT, then clean and dedupe."""
 from __future__ import annotations
 
 import argparse
@@ -11,18 +11,25 @@ from config import setup_logging
 from db import get_engine
 from pipeline.clean import clean_jobs
 from pipeline.dedupe import dedupe_jobs
+from scrapers.ikman import IkmanScraper
 from scrapers.itpro import ItproScraper
 from scrapers.topjobs import TopjobsScraper
+from scrapers.xpressjobs import XpressjobsScraper
 
 log = logging.getLogger(__name__)
 
 def scraper_classes() -> dict[str, type]:
     """Scraper classes in daily-run order."""
-    return {"itpro": ItproScraper, "topjobs": TopjobsScraper}
+    return {
+        "itpro": ItproScraper,
+        "topjobs": TopjobsScraper,
+        "xpressjobs": XpressjobsScraper,
+        "ikman": IkmanScraper,
+    }
 
 
 def scraper_names(source: str) -> list[str]:
-    """Return the scrapers to run. 'all' keeps ITPro first, then topjobs."""
+    """Return the scrapers to run. 'all' keeps the daily-run order."""
     available = scraper_classes()
     if source == "all":
         return list(available)
@@ -74,11 +81,11 @@ def run_daily(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Scrape ITPro and topjobs.lk, clean titles/locations, and dedupe."
+        description="Scrape ITPro, topjobs.lk, XpressJobs, and Ikman IT, then clean and dedupe."
     )
     parser.add_argument(
         "--source",
-        choices=["itpro", "topjobs", "all"],
+        choices=[*scraper_classes(), "all"],
         default="all",
         help="Which site to scrape (default: all). Each selected site gets --max-jobs.",
     )

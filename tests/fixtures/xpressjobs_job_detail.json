@@ -1,0 +1,20 @@
+{
+  "jobId": 355625,
+  "jobTitle": "Risk and Governance Engineer",
+  "minSalary": "Any",
+  "maxSalary": "Any",
+  "salaryRange": "Any",
+  "jobInfo": "<p><span>Strengthen our security posture.</span></p><p>Ensure compliance and mitigate risk.</p>",
+  "jobItem": {
+    "jobId": 355625,
+    "jobTitle": "Risk and Governance Engineer",
+    "organizationName": "Innobot (Pvt) Ltd",
+    "locations": " Colombo, Western Province",
+    "expiryDateOnWebsite": "2026-12-04T12:15:06.11"
+  },
+  "sectors": [
+    {"sectorId": 30, "sectorName": "IT-SWare / Internet", "friendlyName": "it"}
+  ],
+  "organization": {"organizationId": 14719, "organizationName": "Innobot (Pvt) Ltd"},
+  "createdDate": "2026-11-20T12:15:06.11"
+}
