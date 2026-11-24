@@ -57,7 +57,7 @@ flowchart LR
 | Weekly trends + forecasts | ✅ Done | Prophet, or a linear fallback when there is too little history |
 | Role clustering | ✅ Done | KMeans on binary skill TF-IDF; labels such as Backend, Frontend, Data/ML |
 | REST API | ✅ Done | Read-only FastAPI: jobs, weekly skill demand, 8-week forecasts, role clusters |
-| Dashboard | ✅ Done | Streamlit tabs for jobs, skill trends, 8-week forecasts, and role clusters |
+| Dashboard | ✅ Done | Streamlit tabs, plus a Next.js app in `web/` for demand, forecasts, and roles |
 | CV skill-gap checker | 🗓️ Planned | Not started |
 
 ## 🛠️ Tech stack
@@ -69,7 +69,7 @@ flowchart LR
 - **Forecasting:** Prophet, with a least-squares linear fallback
 - **Clustering:** scikit-learn KMeans on binary TF-IDF skill vectors
 - **API:** FastAPI, served with uvicorn. Interactive docs at `/docs`
-- **Dashboard:** Streamlit. It calls the API over HTTP
+- **Dashboard:** Streamlit, and a Next.js app in `web/`. Both call the API over HTTP
 - **Config:** `pydantic-settings` and `python-dotenv`
 - **Quality:** `pytest` and `ruff`
 
@@ -86,6 +86,7 @@ job-market-intel/
 │   └── skills_taxonomy.json   # 391 skills with categories and aliases
 ├── api/                 # read-only FastAPI routes (uvicorn api.main:app)
 ├── dashboard/           # Streamlit app (app.py) and API client (api_client.py)
+├── web/                 # Next.js dashboard (App Router). See web/README.md
 ├── tests/               # pytest suite with HTML fixtures
 ├── .github/workflows/   # ci.yml runs ruff and pytest on Python 3.11
 ├── config.py            # settings loaded from environment / .env
@@ -193,6 +194,18 @@ streamlit run dashboard/app.py
 
 Open <http://127.0.0.1:8501>. The app calls <http://127.0.0.1:8000> unless `API_BASE_URL` is set in the environment or in `.env`.
 
+### Next.js dashboard
+
+`web/` is a second view of the same API. From `web/`:
+
+```bash
+cp .env.example .env.local
+npm install
+npm run dev
+```
+
+Open <http://localhost:3000>. Details, including `NEXT_PUBLIC_API_BASE_URL`, are in `web/README.md`.
+
 The four tabs are:
 
 - **Jobs** filters by source (`itpro`, `topjobs`, `xpressjobs`, `ikman`, or all), a keyword (title, company, location, or description), and an exact skill name.
@@ -219,7 +232,7 @@ pytest -q
 ruff check .
 ```
 
-GitHub Actions runs both commands on Python 3.11 for every push and pull request to `main`. The workflow installs `requirements.txt` (including pytest and ruff) and does not use secrets.
+GitHub Actions runs both commands on Python 3.11 for every push and pull request to `main`, and a second job runs `npm ci`, `npm run lint`, and `npm run build` in `web/`. The workflow does not use secrets.
 
 The test suite runs offline using saved HTML and job fixtures. The Prophet fit is mocked, and role clustering does not call the network. API tests use FastAPI's TestClient and an in-memory SQLite database, so they do not call Neon. Dashboard client tests mock `requests` and check the URL, query params, and parsed JSON for each helper.
 
