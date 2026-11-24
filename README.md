@@ -4,6 +4,7 @@
 
 **Scrape Sri Lankan tech job ads, pull out the skills employers ask for, and forecast which ones are heading up.**
 
+[![CI](https://img.shields.io/github/actions/workflow/status/Dippy2003/job-market-intel/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white)](https://github.com/Dippy2003/job-market-intel/actions/workflows/ci.yml)
 ![Python 3.11](https://img.shields.io/badge/python-3.11-3776AB?logo=python&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/database-Neon%20Postgres-4169E1?logo=postgresql&logoColor=white)
 ![spaCy](https://img.shields.io/badge/NLP-spaCy-09A3D5?logo=spacy&logoColor=white)
@@ -86,6 +87,7 @@ job-market-intel/
 ├── api/                 # read-only FastAPI routes (uvicorn api.main:app)
 ├── dashboard/           # Streamlit app (app.py) and API client (api_client.py)
 ├── tests/               # pytest suite with HTML fixtures
+├── .github/workflows/   # ci.yml runs ruff and pytest on Python 3.11
 ├── config.py            # settings loaded from environment / .env
 ├── alembic.ini
 ├── requirements.txt
@@ -217,6 +219,8 @@ pytest -q
 ruff check .
 ```
 
+GitHub Actions runs both commands on Python 3.11 for every push and pull request to `main`. The workflow installs `requirements.txt` (including pytest and ruff) and does not use secrets.
+
 The test suite runs offline using saved HTML and job fixtures. The Prophet fit is mocked, and role clustering does not call the network. API tests use FastAPI's TestClient and an in-memory SQLite database, so they do not call Neon. Dashboard client tests mock `requests` and check the URL, query params, and parsed JSON for each helper.
 
 ## 🗺️ Roadmap
@@ -230,7 +234,7 @@ The test suite runs offline using saved HTML and job fixtures. The Prophet fit i
 - [x] Role clustering (KMeans on extracted skills)
 - [x] FastAPI REST API
 - [x] Dashboard
-- [ ] CI with GitHub Actions
+- [x] CI with GitHub Actions
 - [x] XpressJobs and Ikman.lk IT scrapers
 - [ ] Skill-extraction accuracy evaluation against a hand-labelled sample
 - [ ] CV skill-gap checker
